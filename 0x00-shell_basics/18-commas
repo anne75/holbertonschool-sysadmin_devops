@@ -1,0 +1,3 @@
+#!/bin/bash
+echo -e $(ls -aF --format='commas')'\n'
+
