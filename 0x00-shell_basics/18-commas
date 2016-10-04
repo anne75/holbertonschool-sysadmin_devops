@@ -1,3 +1,2 @@
 #!/bin/bash
-echo -e $(ls -av --file-type --format='commas')'\n'
-
+ls -av --file-type -m 
