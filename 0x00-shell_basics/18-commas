@@ -1,3 +1,3 @@
 #!/bin/bash
-echo -e $(ls -a --file-type --format='commas')'\n'
+echo -e $(ls -av --file-type --format='commas')'\n'
 
