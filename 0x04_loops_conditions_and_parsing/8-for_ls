@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 # Use for and cut to list the current directory
 for i in *;
 do
