@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# read a file, extract some fields
+f="/etc/passwd"
+IFS=":"
+while read -r -a fields;
+do
+echo "${fields[0]}:${fields[2]}:${fields[5]}"
+done < "$f"

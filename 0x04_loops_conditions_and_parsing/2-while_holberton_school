@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script displays a string 10 times using while
+i=10
+while [ "$i" -gt 0 ];
+do
+echo "Holberton School"
+let "i -= 1"
+done

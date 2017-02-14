@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script uses while and case to display strings
+i=1
+s="bad luck from"
+while [ $i -le 20 ];
+do
+echo "$i"
+case "$i" in
+4) echo "$s China" ;;
+9) echo "$s Japan" ;;
+17) echo "$s Italy" ;;
+# *) echo "$i" ;;
+esac
+let "++i"
+done
