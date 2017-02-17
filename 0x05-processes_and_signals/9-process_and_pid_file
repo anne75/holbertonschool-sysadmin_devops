@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Intercepts signals
+trap "echo 'I hate the kill command'" SIGTERM
+trap "echo 'Y U no love me?!'" SIGINT
+trap "rm -f '/var/run/holbertonscript.pid'; exit" SIGTERM SIGQUIT
+
+echo "$$" > '/var/run/holbertonscript.pid'
+while true;
+do
+echo "To infinity and beyond"
+sleep 2
+done

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#kills a process whose command is known
+# kill $(ps aux | grep -e"4-to_inf*" | grep -v -e"grep" | cut -d' ' -f4)
+kill "$(pgrep -f '4-to_inf*')"

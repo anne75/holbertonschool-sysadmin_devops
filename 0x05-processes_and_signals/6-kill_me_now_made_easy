@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Kills a process whose command is known
+pkill -f "4-to_inf*"
