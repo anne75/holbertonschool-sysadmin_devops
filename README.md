@@ -1,1 +1,2 @@
-This folder contains the various tasks I had to perform to learn how to use the shell
+##Bash scripts
+This directory contains all the projects I had to solve in `bash`.
