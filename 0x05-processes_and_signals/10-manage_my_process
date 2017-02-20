@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-#Creates an infinite loop
+#very bare version of init.d/command start. no check for multiple instances
 if [ x"$1" = "xstart" ];
 then
     ./manage_my_process &
-    echo $! > /var/run/my_process.pid
+    echo "$!" > /var/run/my_process.pid
     echo "manage_my_process started"
 elif [ x"$1" = "xstop" ];
 then
