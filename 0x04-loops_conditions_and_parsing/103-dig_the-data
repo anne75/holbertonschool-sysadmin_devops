@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 #parse a log file in awk
-awk '{ip[$1][$9]++} END {for (i in ip){ for (u in ip[i]) print ip[i][u], i, u;}}' apache-access.log | sort -nr
+# awk '{ip[$1][$9]++} END {for (i in ip){ for (u in ip[i]) print ip[i][u], i, u;}}' apache-access.log | sort -nr
+awk '{print $1, $9}' apache-access.log | sort | uniq -c | sort -nr
