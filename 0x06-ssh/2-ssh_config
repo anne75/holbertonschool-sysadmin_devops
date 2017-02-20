@@ -1,0 +1,4 @@
+#SSH client configuration as per question requirements
+Host 54.204.151.7
+     PasswordAuthentication no
+     IdentityFile ~/.ssh/holberton
