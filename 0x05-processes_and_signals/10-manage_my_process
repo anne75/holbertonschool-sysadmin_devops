@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#Creates an infinite loop
+if [ x"$1" = "xstart" ];
+then
+    ./manage_my_process &
+    echo $! > /var/run/my_process.pid
+    echo "manage_my_process started"
+elif [ x"$1" = "xstop" ];
+then
+    kill "$(cat /var/run/my_process.pid)"
+    rm -f /var/run/my_process.pid
+    echo "manage_my_process stopped"
+elif [ x"$1" = "xrestart" ];
+then
+    kill "$(cat /var/run/my_process.pid)"
+    rm -f /var/run/my_process.pid
+    ./manage_my_process &
+    echo "$!" > /var/run/my_process.pid
+    echo "manage_my_process restarted"
+else
+echo "Usage: manage_your_process {start|stop|restart}"
+fi
