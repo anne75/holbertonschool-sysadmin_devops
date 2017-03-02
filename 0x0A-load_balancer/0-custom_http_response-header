@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Script to automate installation of nginx, deliver 301, 404
+# and custom header on a server
+# Write a specific string at the root
+# shellcheck disable=SC2154
+sudo apt-get update
+sudo apt-get -y install nginx
+echo "Holberton School for the win!" | sudo tee /usr/share/nginx/html/index.html >/dev/null
+sudo sed -i '26 i\     rewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/custom_404.html
+new_string="error_page 404 /custom_404.html;\n location = /custom_404.html {\n root /usr/share/nginx/html;\n internal;\n}"
+to_match="#error_page 404 /404.html;"
+sudo sed -i "s@$to_match@$new_string@" /etc/nginx/sites-available/default
+sudo sed -i "27 i\     add_header X-Served-by $HOSTNAME;" /etc/nginx/sites-available/default
+sudo service nginx start
+sudo service nginx restart
