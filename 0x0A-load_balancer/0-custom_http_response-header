@@ -12,5 +12,6 @@ new_string="error_page 404 /custom_404.html;\n location = /custom_404.html {\n r
 to_match="#error_page 404 /404.html;"
 sudo sed -i "s@$to_match@$new_string@" /etc/nginx/sites-available/default
 sudo sed -i "27 i\     add_header X-Served-by $HOSTNAME;" /etc/nginx/sites-available/default
+sudo sed -i " 16 i\       add_header X-Served-by $HOSTNAME;" /etc/nginx/nginx.conf
 sudo service nginx start
 sudo service nginx restart
