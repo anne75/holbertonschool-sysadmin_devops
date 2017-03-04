@@ -39,6 +39,7 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 	# added per digital ocean ssl
+	option forwardfor
 	option http-server-close
 
 frontend www-http
@@ -55,7 +56,6 @@ frontend www-https
 
 backend www-backend
 	balance roundrobin
-	option forwardfor
 	redirect scheme https code 301 if !{ ssl_fc }
 	server 60-web-01 54.204.151.7:80 check
 	server 60-web-02 54.90.224.219:80 check
