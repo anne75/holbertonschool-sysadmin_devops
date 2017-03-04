@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# First awk script, first bash function
+
+print_line()
+{
+	printf "The subdomain %s is a " "$2"
+	dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk 'FNR == 2 {printf "%s ", $4}'
+	printf "record and points to "
+	dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk 'FNR == 2 {print $5}'
+}
+
+if [ -z "$2" ]; then
+     	for f in "www" "lb-01" "web-01" "web-02"
+	do
+	    print_line "$1" "$f"
+	done
+else
+	print_line "$1" "$2"
+fi
