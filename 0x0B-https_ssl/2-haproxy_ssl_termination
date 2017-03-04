@@ -39,7 +39,6 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 	# added per digital ocean ssl
-	option forwardfor
 	option http-server-close
 
 frontend www-http
@@ -55,10 +54,11 @@ frontend www-https
 	default_backend www-backend
 
 backend www-backend
-	redirect scheme https if !{ ssl_fc }
+	balance roundrobin
+	option forwardfor
+	redirect scheme https code 301 if !{ ssl_fc }
 	server 60-web-01 54.204.151.7:80 check
 	server 60-web-02 54.90.224.219:80 check
-	# maybe add https code 301 if...
 
 backend letsencrypt-backend
 	server letsencrypt 127.0.0.1:54321
