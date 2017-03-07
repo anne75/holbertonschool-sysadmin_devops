@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Commands used to install ufw firewall and set it up
+sudo apt-get update
+sudo apt-get -y install ufw
+
+# should not be running sudo ufw status [verbose]
+
+# allow IPv6
+sudo sed -i "s@IPV6=no@IPV6=yes@" /etc/default/ufw
+
+# allow no incoming traffic
+sudo ufw default deny incoming
+sudo default allow outgoing
+
+# filter for http https and ssh
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+
+# run
+sudo ufw enable
+
+#to stop sudo ufw disable
