@@ -1,0 +1,22 @@
+Step by step to forward port 8080 to port 80 with ufw
+
+in file /etc/default/ufw
+var1="DEFAULT_FORWARD_POLICY="
+sudo sed -i "s@${var1}\"DROP\"@${var1}\"ACCEPT\"@" /etc/default/ufw
+
+in file /etc/ufw/sysctl.conf
+sudo sed -i "8,9 s/#//" /etc/ufw/sysctl.conf
+to allow forwarding for ipv4 and ipv6
+
+in file /etc/ufw/before.rules insert
+# NAT RULES
+*nat
+:PREROUTING ACCEPT [0:0]
+-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
+COMMIT
+
+after this line
+COMMIT
+
+
+then restart ? reboot
