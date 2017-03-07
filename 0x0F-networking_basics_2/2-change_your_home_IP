@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# configure the hosts file to resolve some addresses
-differently
+# configure the hosts file to resolve some addresses differently
 var1=$(wc -l /etc/hosts | cut -d' ' -f1)
 
 # change localhost to 127.0.0.2 in theory
