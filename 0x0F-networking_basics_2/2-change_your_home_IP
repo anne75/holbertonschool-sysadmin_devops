@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# configure the hosts file to resolve some addresses
+differently
+var1=$(wc -l /etc/hosts | cut -d' ' -f1)
+
+# change localhost to 127.0.0.2 in theory
+# sudo sed -i "/localhost/s/.1/.2/" /etc/hosts
+
+# on a docker container we need this workaround, they run as root
+cp /etc/hosts ~/hosts.new
+sed -i "/localhost/s/.1/.2/" ~/hosts.new
+
+#change facebook.com to 8.8.8.8
+sed -i "${var1} a \\\n#prank\n8.8.8.8\tfacebook.com" ~/hosts.new
+
+cp -f ~/hosts.new /etc/hosts

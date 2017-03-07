@@ -1,0 +1,9 @@
+#/usr/bin/env bash
+# scripts to display all active ipv4 addresses
+
+#using ifconfig
+ifconfig | awk -F "[: ]+" '/inet addr:/ { print $4 }'
+
+#using ip
+ip -f inet -o addr |cut -d\  -f 7 | cut -d/ -f 1
+ip -o -4 addr | awk '{ gsub (/\/.*/, ""); print $4}'
