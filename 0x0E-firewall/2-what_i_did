@@ -15,8 +15,6 @@ in file /etc/ufw/before.rules insert
 -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
 COMMIT
 
-after this line
-COMMIT
-
+before the filter rules
 
 then restart ? reboot
