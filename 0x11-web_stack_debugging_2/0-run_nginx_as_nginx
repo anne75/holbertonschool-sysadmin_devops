@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# modify nginx to be able to run it as the nginx user and not the root
+# user nginx already exists
+
+# kill apache2 running on 8080
+pkill apache2
+
+# modify the config files to show user nginx not necessary
+# sed -i "s@#user www-data;@user nginx;@" /etc/nginx/nginx.conf
+
+# listen to port 8080, as for port < 1024 need root
+sed -i "s@listen 80@listen 8080@" /etc/nginx/sites-enabled/default
+sudo sed -i 's@:80 @:8080 @' /etc/nginx/sites-enabled/default
+
+# change ownership to files the config is using, directories could be 644
+chown -R nginx:www-data /usr/share/nginx/html
+chown -R nginx:www-data /var/log/nginx
+chown -R nginx:www-data /var/www/
+chown -R nginx:www-data /etc/nginx
+
+#change mode to files
+chmod 755 -R /usr/share/nginx/
+chmod 755 -R /var/www/
+chmod 755 -R /var/log/nginx/
+chmod 755 -R /etc/nginx
+
+#switch to user nginx
+su nginx
+/usr/sbin/nginx
