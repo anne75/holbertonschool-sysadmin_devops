@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# fix nginx sites-enabled default file to listen to port 80
+# nginx service status is shown as not running
+
+#I remove the bad file
+rm /etc/nginx/sites-enabled/default
+
+#I recreate the symlink
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+#start nginx
+service nginx start
