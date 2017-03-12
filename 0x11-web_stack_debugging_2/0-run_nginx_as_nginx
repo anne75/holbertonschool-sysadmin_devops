@@ -25,5 +25,4 @@ chmod 755 -R /var/log/nginx/
 chmod 755 -R /etc/nginx
 
 #switch to user nginx
-su nginx
-/usr/sbin/nginx
+sudo -u nginx /usr/sbin/nginx
