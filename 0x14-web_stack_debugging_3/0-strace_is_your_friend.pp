@@ -1,6 +1,6 @@
 # There is a typ in a php file so the website returns 500
 exec { 'sed -i s@.phpp @.php @ /var/www/html/wp-settings.ph':
-  command => "/bin/sed  -i \"s@.phpp@.php@\" /var/www/html/wp-settings.php",
+  command => 'sed  -i "s@.phpp@.php@" /var/www/html/wp-settings.php',
   onlyif  => 'test ! -f /var/www/html/wp-settings.php',
   path    => ['/usr/bin','/usr/sbin','/bin','/sbin'],
 }
