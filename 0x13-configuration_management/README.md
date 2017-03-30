@@ -7,7 +7,7 @@ Our tasks were to:
 
 _____
 **Install puppet**  
-This is how puppet was installed on ubuntu trusty. It is an older version of puppet(3.4.3).
-wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
-sudo dpkg -i puppetlabs-release-trusty.deb
-sudo apt-get update
+This is how puppet was installed on ubuntu trusty. It is an older version of puppet(3.4.3).   
+wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb  
+sudo dpkg -i puppetlabs-release-trusty.deb   
+sudo apt-get update   
