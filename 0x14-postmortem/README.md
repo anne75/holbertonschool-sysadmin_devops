@@ -18,12 +18,12 @@ Security Breach was solved by 12:15PM PT when Nginx was running as another user.
 
 ### Root Cause  
 
-Earlier that day a new container was configured improperly due to lack of order in deployment/image files and directories.
+Earlier that day a new container was configured improperly due to lack of order and information in deployment/image files and directories.
 After a routine check after its deployment, an engineer found the issue. It was found that the wrong configuration files were used.
 The configuration created the user that was supposed to run Nginx, but the Nginx configuration files did not take that user into 
 consideration. As Nginx starts automatically after install, we had to stop it first. 
-As Nginx should not have been run as root then it should not have listen to port 80. It was then found another bug,
-as Apache was already running on this server on port 8080 instead of Nginx.  
+As Nginx should not have been run as root then it should not have been listening on port 80. It was then found another bug,
+as Apache was already running on this container on port 8080 instead of Nginx.  
 Thankfully this was a single error, and no other containers were touched.
 
 ### Resolution and Recovery
@@ -31,7 +31,7 @@ Thankfully this was a single error, and no other containers were touched.
 It was decided to stop Nginx immediately because of security, and to keep using Apache as long as Nginx was not ready.
 Then the set-up and configuration of the container were thoroughly examined to see what had been done. The Nginx user was there.
 However Nginx configuration file was set up to be run as root. The file had to be changed to listen to port 8080 on IPv4 and IPv6.
-Then it was decided to let the error logs website root folders, configuration files as they were, and so they needed to be
+Then it was decided to let the error logs, website root folders, configuration files as they were in the file system, and so they needed to be
 tracked down to change their owner and their permission. Eventually Apache was stopped and Nginx started as the user.  
 
 ### Corrective and Preventative Measures
