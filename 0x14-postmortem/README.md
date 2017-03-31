@@ -4,8 +4,8 @@
 
 At 9:15AM PT on 03-10-2017 it was found a security breach in one of the containers. 
 Web server Nginx was run as root, listening on port 80. Service had to be interrupted on that port.
-Service was also stopped on port 8080 for 15 minutes.
-Security Breach was solved by 12:15PM PT when Nginx was running as another user.  
+Service was completely down on that container for 15 minutes around 11:45AM.
+Security breach was solved immediately and container resumed normal course of operations by 12:15PM PT. 
 
 ### Timeline
 
