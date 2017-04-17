@@ -15,6 +15,6 @@ if __name__ == "__main__":
         json.dump(
             {user.get("id"): [
                 {"task": e.get("title"), "completed": e.get("completed"),
-                 "username": user.get("username")} for e in \
-                 requests.get("{}/{}/todos".format(
-                     base_url, user.get("id"))).json()] for user in users}, f)
+                 "username": user.get("username")} for e in
+                requests.get("{}/{}/todos".format(
+                    base_url, user.get("id"))).json()] for user in users}, f)
