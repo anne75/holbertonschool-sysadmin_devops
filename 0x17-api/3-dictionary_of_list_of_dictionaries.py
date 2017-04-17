@@ -4,8 +4,8 @@ Use https://jsonplaceholder.typicode.com/ to request all users and their tasks
 Then export data as json format
 Pushing comprehension to the unreadable
 """
-import requests
 import json
+import requests
 
 
 if __name__ == "__main__":

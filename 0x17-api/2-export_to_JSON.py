@@ -4,9 +4,9 @@ Use https://jsonplaceholder.typicode.com/ to request user name and tasks
 from given userID
 Then export data as json format
 """
-import sys
-import requests
 import json
+import requests
+import sys
 
 
 if __name__ == "__main__":
