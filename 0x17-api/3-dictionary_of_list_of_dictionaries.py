@@ -11,7 +11,7 @@ import json
 if __name__ == "__main__":
     base_url = "https://jsonplaceholder.typicode.com/users"
     users = requests.get(base_url).json()
-    with open ("todo_all_employees.json", mode="w", newline="") as f:
+    with open("todo_all_employees.json", mode="w", newline="") as f:
         json.dump(
             {user.get("id"): [
                 {"task": e.get("title"), "completed": e.get("completed"),

@@ -16,7 +16,7 @@ if __name__ == "__main__":
             base_url, sys.argv[1])).json().get("username")
         r = requests.get("{}/{}/todos".format(
             base_url, sys.argv[1])).json()
-        with open ("{}.json".format(sys.argv[1]), mode="w", newline="") as f:
+        with open("{}.json".format(sys.argv[1]), mode="w", newline="") as f:
            json.dump({sys.argv[1]: [
                {"task": e.get("title"), "completed": e.get("completed"),
                 "username": name} for e in r]}, f)
