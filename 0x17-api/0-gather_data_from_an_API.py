@@ -32,4 +32,8 @@ def get_user_info(userid):
 if __name__ == "__main__":
     base_url = "https://jsonplaceholder.typicode.com"
     if len(sys.argv) > 1:
-        get_user_info(sys.argv[1])
+        try:
+            userid = int(sys.argv[1])
+            get_user_info(userid)
+        except (ValueError, TypeError):
+            pass
