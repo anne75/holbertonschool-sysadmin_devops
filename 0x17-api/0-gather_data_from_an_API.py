@@ -3,9 +3,9 @@
 Use https://jsonplaceholder.typicode.com/ to request user name and tasks
 from given userID
 """
-import sys
-import requests
 import json
+import requests
+import sys
 
 
 def get_user_info(userid):
