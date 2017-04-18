@@ -25,8 +25,8 @@ def get_user_info(userid):
     print("Employee {} is done with tasks({:d}/{:d}):".format(
         name, len(completed_tasks), len(r)))
     if completed_tasks:
-        print("\t", end="")
-        print("\n\t".join(e.get("title") for e in completed_tasks))
+        print("\t ", end="")
+        print("\n\t ".join(e.get("title") for e in completed_tasks))
 
 
 if __name__ == "__main__":
