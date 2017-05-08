@@ -1,7 +1,7 @@
 ## Web Infrastructure Design
 
 This project is about drawing/whiteboarding simple web infrastructures. It started with our teachers explaining what we were currently building in class with our servers and then we had to do the same on our own.  
-These are links to the teachers' whiteboards, so hopefully I copied right [one](./ws-sj-0.pdf), [two](./ws-sj-1.pdf), [three](./ws-sj-2.pdf) and [four](./ws-sj-3.pdf). Then my own interpretations are linked in the files and here as well.  
+These are links to the teachers' whiteboards, so hopefully I copied right [one](./ws-sj-1.pdf), [two](./ws-sj-2.pdf), [three](./ws-sj-3.pdf) and [four](./ws-sj-4.pdf). Then my own interpretations are linked in the files and here as well.  
 
 ___
 **Readings**  
