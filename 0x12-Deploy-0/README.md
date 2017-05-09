@@ -1,8 +1,14 @@
 ## Deploy a static website
-This project actually resides in another [repository](../../AirBnB_v2).  
+This project actually resides in another [repository](https://github.com/anne75/AirBnB_clone).  
 The configuration is [here](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/288/aribnb_diagram_0.jpg?cache=off).  
 
 We used `fabric` module in python a a bit of bash scripting to archive the website and then deploy it on a web server.
+The tasks were the following:  
+- [prepare the web servers](https://github.com/anne75/AirBnB_clone/blob/master/0-setup_web_static.sh)  
+- [compress before sending](https://github.com/anne75/AirBnB_clone/blob/master/1-pack_web_static.py)  
+- [deploy archive](https://github.com/anne75/AirBnB_clone/blob/master/2-do_deploy_web_static.py)  
+- [combine above](https://github.com/anne75/AirBnB_clone/blob/master/3-deploy_web_static.py)  
+- [clean up](https://github.com/anne75/AirBnB_clone/blob/master/100-clean_web_static.py)  
 
 _________________
 **Reading**
