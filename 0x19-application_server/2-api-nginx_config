@@ -70,6 +70,7 @@ server {
 		proxy_pass http://127.0.0.1:8002;
 	}
 
+	#question 2 - serve the api which returns json files
 	location /api {
 		include proxy_params;
 		proxy_pass http://127.0.0.1:8003;
