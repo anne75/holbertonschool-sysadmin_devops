@@ -9,7 +9,7 @@ def recurse(subreddit, hot_list=[]):
     """
     entry point for the recursion
     """
-    url = "https://www.reddit.com/r/{}.json".format(subreddit)
+    url = "https://www.reddit.com/r/{}.json?limit=100".format(subreddit)
     h = requests.utils.default_headers()
     headers = {'User-Agent': "ubuntu:noredditapp (by /u/noone)'"}
     h.update(headers)
@@ -22,13 +22,13 @@ def helper(url, headers, after, hot_list=[]):
     """
     base_url = url
     if after != "start":
-        url += "?after={}".format(after)
+        url += "&after={}".format(after)
     r = requests.get(url, headers=headers, allow_redirect=False)
     if r.status_code != 200:
         return None
-    for value in r.json()['data'].get('children', []):
+    for value in r['data'].get('children', []):
         hot_list.append(value['data']['title'])
     after = r['data'].get('after')
     if not after:
         return hot_list
-    return (helper(base_url, headers, after))
+    return (helper(base_url, headers, after, hot_list))
