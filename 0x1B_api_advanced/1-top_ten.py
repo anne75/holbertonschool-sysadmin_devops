@@ -12,7 +12,7 @@ def top_ten(subreddit):
     Argument:
        subreddit: a subreddit
     """
-    url = "https://www.reddit.com/r/{}/top.json?limit=10&t=day".format(subreddit)
+    url = "https://www.reddit.com/r/{}.json?limit=10&t=day".format(subreddit)
     h = requests.utils.default_headers()
     headers = {'User-Agent': "ubuntu:noredditapp (by /u/noone)'"}
     h.update(headers)

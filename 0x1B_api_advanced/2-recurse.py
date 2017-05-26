@@ -11,7 +11,7 @@ def recurse(subreddit, hot_list=[]):
 
 
     """
-    url = "https://www.reddit.com/r/{}/top.json?t=all&limit=100".format(subreddit)
+    url = "https://www.reddit.com/r/{}.json?limit=100".format(subreddit)
     h = requests.utils.default_headers()
     headers = {'User-Agent': "ubuntu:noredditapp (by /u/noone)'"}
     h.update(headers)
@@ -28,11 +28,11 @@ def helper(url, headers, after, hot_list=[]):
     r = requests.get(url, headers=headers).json()
     if not r:
         return (None if not hot_list else hot_list)
-    print(url)
     if not r.get('data', {}).get('children', []):
         return (None if not hot_list else hot_list)
     for value in r['data']['children']:
-        hot_list.append(value['data']['title'])
+        if "subreddit of the month" not in value['data']['title'].lower():
+            hot_list.append(value['data']['title'])
     after = r['data'].get('after')
     if not after:
         return hot_list
