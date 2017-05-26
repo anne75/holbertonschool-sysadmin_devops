@@ -22,7 +22,6 @@ def count_words(subreddit, word_list, dico=defaultdict(int), after="start"):
         url += "&after={}".format(after)
     else:
         word_list = [word.lower() for word in word_list]
-        word_list = set(word_list)
     r = requests.get(url, headers=h, allow_redirects=False)
     if r.status_code != 200:
         return
@@ -34,7 +33,7 @@ def count_words(subreddit, word_list, dico=defaultdict(int), after="start"):
     after = r.json()['data'].get('after')
     if not after:
         if dico:
-            tmp = ["{} : {:d}".format(k, dico[k]) for
+            tmp = ["{}: {:d}".format(k, dico[k]) for
                    k in sorted(dico, key=dico.get, reverse=True)]
             print("\n".join(tmp))
     else:
