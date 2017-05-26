@@ -4,12 +4,10 @@ recurse a request, poor api
 """
 import requests
 
+
 def recurse(subreddit, hot_list=[]):
     """
     entry point for the recursion
-
-
-
     """
     url = "https://www.reddit.com/r/{}.json?limit=100".format(subreddit)
     h = requests.utils.default_headers()
@@ -17,10 +15,10 @@ def recurse(subreddit, hot_list=[]):
     h.update(headers)
     return (helper(url, h, "start"))
 
+
 def helper(url, headers, after, hot_list=[]):
     """
     the recursion
-
     """
     base_url = url
     if after != "start":
@@ -36,4 +34,4 @@ def helper(url, headers, after, hot_list=[]):
     after = r['data'].get('after')
     if not after:
         return hot_list
-    return (helper(base_url, headers, after ))
+    return (helper(base_url, headers, after))
