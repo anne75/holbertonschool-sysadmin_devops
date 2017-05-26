@@ -21,15 +21,14 @@ def count_words(subreddit, word_list, dico=defaultdict(int), after="start"):
     if after != "start":
         url += "&after={}".format(after)
     else:
-        word_list = [word.lower() for word in word_list if word]
+        word_list = [word.lower() for word in word_list]
         word_list = set(word_list)
     r = requests.get(url, headers=h, allow_redirects=False)
     if r.status_code != 200:
         return
     for value in r.json()['data'].get('children', []):
-        title = value['data']['title'].split(' ')
+        title = value['data']['title'].lower().split()
         for word in title:
-            word = word.lower()
             if word in word_list:
                 dico[word] += 1
     after = r.json()['data'].get('after')
