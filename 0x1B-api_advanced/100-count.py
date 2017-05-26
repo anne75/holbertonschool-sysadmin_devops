@@ -20,6 +20,7 @@ def count_words(subreddit, word_list, dico=defaultdict(int), after="start"):
         url += "&after={}".format(after)
     r = requests.get(url, headers=h, allow_redirects=False)
     if r.status_code != 200:
+        print("")
         return None
     for value in r.json()['data'].get('children', []):
         title = value['data']['title'].split(' ')
