@@ -5,6 +5,7 @@ I query the reddit api without login
 """
 import requests
 
+
 def number_of_subscribers(subreddit):
     """
     get number of subscribers on a subreddit
@@ -20,7 +21,7 @@ def number_of_subscribers(subreddit):
     headers = {'User-Agent': "ubuntu:noredditapp (by /u/noone)'"}
     h.update(headers)
     r = requests.get(url, headers=h).json()
-    answer =  r.get('data', {}).get('subscribers')
+    answer = r.get('data', {}).get('subscribers')
     if not answer:
         return 0
     else:
