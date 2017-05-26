@@ -23,7 +23,7 @@ def helper(url, headers, after, hot_list=[]):
     base_url = url
     if after != "start":
         url += "&after={}&count={:d}".format(after, len(hot_list))
-    r = requests.get(url, headers=headers).json()
+    r = requests.get(url, headers=headers, allow_redirect=False).json()
     if r.status_code != 200:
         return (None if not hot_list else hot_list)
     if not r.get('data', {}).get('children', []):
