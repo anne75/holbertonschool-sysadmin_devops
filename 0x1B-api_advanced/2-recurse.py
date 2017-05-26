@@ -23,10 +23,10 @@ def helper(url, headers, after, hot_list=[]):
     base_url = url
     if after != "start":
         url += "&after={}".format(after)
-    r = requests.get(url, headers=headers, allow_redirect=False).json()
+    r = requests.get(url, headers=headers, allow_redirect=False)
     if r.status_code != 200:
         return None
-    for value in r['data'].get('children', []):
+    for value in r.json()['data'].get('children', []):
         hot_list.append(value['data']['title'])
     after = r['data'].get('after')
     if not after:
