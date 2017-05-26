@@ -19,7 +19,7 @@ def count_words(subreddit, word_list, dico=defaultdict(int), after="start"):
     if after != "start":
         url += "&after={}".format(after)
     else:
-        word_list = [w.lower() for w in word_list]
+        word_list = set(word_list)
     r = requests.get(url, headers=h, allow_redirects=False)
     if r.status_code != 200:
         print("")
