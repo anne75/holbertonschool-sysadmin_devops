@@ -25,7 +25,7 @@ def helper(url, headers, after, hot_list=[]):
         url += "&after={}&count={:d}".format(after, len(hot_list))
     r = requests.get(url, headers=headers, allow_redirect=False).json()
     if r.status_code != 200:
-        return (None if not hot_list else hot_list)
+        return None
     if not r.get('data', {}).get('children', []):
         return (None if not hot_list else hot_list)
     for value in r['data']['children']:
